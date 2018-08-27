@@ -145,7 +145,7 @@ def menu():
             id = int(input('digite id a buscar: '))
             usuario = User(id, '', '', 0, 0, 0, '', '', 0, 0, '', '')
             usuario.buscar_usuario()
-
+#comentario de una linea
 
         elif seleccion == 5:
             print('salir')
