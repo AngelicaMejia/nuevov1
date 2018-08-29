@@ -18,6 +18,16 @@ class Prestamo:
         }
         self.prestamos.append(self.prestamo)
 
+    def ver_prestamo(self, cedulax, valorCuota):
+        x = valorCuota
+        for u in self.prestamos:
+            if u['cedulaPrestamo'] == cedulax:
+               print("El prestamo es de valor es de : {}".format(u['valorPrestamo']))
+               print("Las cuotas del prestamo son : {}".format(u['numeroCuotaPrestamo']))
+               print("El valor de las cuotas del prestamo son : {}".format(x))
+            else:
+                print('Prestamo erroneo')
+
 
 class Cuotas:
     cedulaCuota = 0
@@ -71,7 +81,7 @@ class Usuario(Prestamo, Cuotas):
     def ver_usuario(self, cedulax):
         for u in self.usuarios:
             if u['cedula'] == cedulax:
-               print("El usuario es: {}".format(u['cedula,nombre,edad,correo']))
+               print("El usuario  registrado con exito es: {}".format(u['nombre']))
             else:
                 print('USUARIO NO REGISTRADO')
 
@@ -95,9 +105,8 @@ def menu():
             edad = int(input('Digite edad de usuario: '))
             correo = input('Digite  correo de usuario: ')
             usuario = Usuario(cedula, nombre, edad, correo, None, None, None, None, None, None, 'false')
-            ver = Usuario(cedula)
             usuario.crear_usuario()
-            ver.ver_usuario(cedula)
+            usuario.ver_usuario(cedula)
 
         elif seleccion == 2:
             print('---crear prestamo--')
@@ -109,11 +118,13 @@ def menu():
             prestamo.crear_prestamo()
             cuota = Cuotas(cedulaPrestamo, numeroCuotaPrestamo, valorCuota, 'false')
             cuota.pagar_cuota()
-            cuota.cancelar_cuota()
+            prestamo.ver_prestamo(cedulaPrestamo, valorCuota)
+
 
         elif seleccion == 3:
             print('---pagar cuota---')
             cedulaCuota = int(input('digite cedula de usuario: '))
+
 
         elif seleccion == 4:
             print('buscar usuarios')
